@@ -13,7 +13,7 @@ def driver():
     Fixture tạo một phiên bản Chrome headless duy nhất cho toàn bộ suite.
     """
     options = Options()
-    #options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     # Nếu bạn muốn thấy trình duyệt chạy, bỏ comment dòng sau:
