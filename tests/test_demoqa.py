@@ -58,3 +58,16 @@ def test_negative_nonexistent_element(driver):
     with allure.step("Thử tìm element không tồn tại"):
         with pytest.raises(NoSuchElementException):
             driver.find_element(By.ID, "this-id-does-not-exist")
+
+@allure.feature("DemoQA Homepage")
+@allure.story("Negative test for non-existent element")
+def test_negative_nonexistent_element(driver):
+    """
+    Test negative: Mở trang chủ, tìm một element không tồn tại và verify nó ném NoSuchElementException.
+    """
+    with allure.step("Mở DemoQA Homepage"):
+        driver.get("https://demoqa.com")
+
+    with allure.step("Thử tìm element không tồn tại"):
+        with pytest.raises(NoSuchElementException):
+            driver.find_element(By.ID, "this-id-does-not-exist")
