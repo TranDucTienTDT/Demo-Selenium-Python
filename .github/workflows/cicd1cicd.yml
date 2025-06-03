@@ -6,7 +6,8 @@ on:
       - master
 
 jobs:
-  test-and-report:
+  run-test:
+    name: Run tests
     runs-on: ubuntu-latest
 
     steps:
@@ -22,34 +23,40 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
-        run: |
-          pytest --alluredir=allure-results
-        continue-on-error: true
-
-      # Load history
-      - name: Load test report history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      # Build report
-      - name: Build Allure Report
-        uses: simple-elf/allure-report-action@v1.12
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_results: allure-results
-          allure_history: allure-history
-
-      # Publish report
-      - name: Publish report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
+          - name: Run tests
+            run: |
+              pytest --alluredir=allure-results
+            continue-on-error: true
+    
+  allure-report:
+      needs: run-test
+      if: always() # Always run to generate report even if tests fail
+      name: Generate Allure Report
+      runs-on: ubuntu-latest
+      steps:
+        # Load history
+        - name: Load test report history
+          uses: actions/checkout@v4
+          if: always()
+          continue-on-error: true
+          with:
+            ref: gh-pages
+            path: gh-pages
+    
+        # Build report
+        - name: Build Allure Report
+          uses: simple-elf/allure-report-action@master
+          if: always()
+          with:
+            gh_pages: gh-pages
+            allure_results: allure-results
+            allure_history: allure-history
+    
+        # Publish report
+        - name: Publish report to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v3
+          if: always()
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_branch: gh-pages
+            publish_dir: allure-history
