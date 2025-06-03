@@ -63,7 +63,7 @@ def test_negative_nonexistent_element(driver):
 @allure.story("Negative test for non-existent element")
 def test_negative_nonexistent_element_2(driver):
     """
-    Test negative: Mở trang chủ, tìm một element không tồn tại và verify nó ném NoSuchElementException.
+    Test negative: Mở trang chủ, tìm một element không tồn tại và  nó ném NoSuchElementException.
     """
     with allure.step("Mở DemoQA Homepage"):
         driver.get("https://demoqa.com")
