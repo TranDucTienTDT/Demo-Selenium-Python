@@ -1,0 +1,58 @@
+name: Run tests and publish Allure report
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  test-and-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # … (các step để thiết lập ngôn ngữ, cài dependencies, chạy test, vd: pytest, Maven, npm,…)
+      # Ví dụ với pytest (Python):
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest --alluredir=allure-results
+        continue-on-error: true
+
+      # Load history
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      # Build report
+      - name: Build Allure Report
+        uses: simple-elf/[email protected]
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_results: allure-results
+          allure_history: allure-history
+
+      # Publish report
+      - name: Publish report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
