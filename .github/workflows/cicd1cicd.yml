@@ -44,13 +44,12 @@ jobs:
     
         # Build report
         - name: Build Allure Report
-          uses: simple-elf/allure-report-action@v1.12
+          uses: simple-elf/allure-report-action@master
           if: always()
           with:
             gh_pages: gh-pages
             allure_results: allure-results
             allure_history: allure-history
-            allure_report: allure-report
     
         # Publish report
         - name: Publish report to GitHub Pages
