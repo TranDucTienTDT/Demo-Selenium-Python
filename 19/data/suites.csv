@@ -1,0 +1,10 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+    Test positive: Mở trang chủ https://demoqa.com, click vào card 'Elements' và verify URL.
+    ","4542","test_navigate_to_elements","tests","Fri Jun 06 15:15:18 GMT 2025","failed","Fri Jun 06 15:15:23 GMT 2025","","test_demoqa","",""
+"
+    Test negative: Mở trang chủ, tìm một element không tồn tại và verify nó ném NoSuchElementException.
+    ","12421","test_negative_nonexistent_element","tests","Fri Jun 06 15:15:23 GMT 2025","passed","Fri Jun 06 15:15:35 GMT 2025","","test_demoqa","",""
+"
+    Test negative: Mở trang chủ, tìm một element không tồn tại và  nó ném NoSuchElementException.
+    ","12216","test_negative_nonexistent_element_2","tests","Fri Jun 06 15:15:35 GMT 2025","passed","Fri Jun 06 15:15:48 GMT 2025","","test_demoqa","",""
