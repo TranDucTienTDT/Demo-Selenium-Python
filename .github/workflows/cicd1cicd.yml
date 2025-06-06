@@ -1,4 +1,4 @@
-name: 🔄 CI: Pytest + Allure Report
+name: CI Pytest + Allure Report
 
 on:
   push:
