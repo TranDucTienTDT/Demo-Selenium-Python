@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"790f38fc6169a4149c2808528bc0b14d","name":"DemoQA Homepage","statistic":{"failed":1,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":2}},{"uid":"12d5d023ff02ab2c63585ee01abeb9d7","name":"DemoQA POM Tests","statistic":{"failed":1,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":1}}]}

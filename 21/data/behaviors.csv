@@ -1,0 +1,4 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","","1","DemoQA Homepage","0","0","Navigate to Elements section","0"
+"0","","1","DemoQA POM Tests","0","0","Kiểm tra chức năng điều hướng từ Home → Elements","0"
+"0","","0","DemoQA Homepage","2","0","Negative test for non-existent element","0"
